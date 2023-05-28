@@ -8,16 +8,17 @@ Please note that the CLIP model used in this project requires a significant amou
 
 ## Installation
 
-1. Ensure you have Python 3.7+ installed on your machine. 
-2. Install necessary dependencies by running `pip install -r requirements.txt` in your terminal.
-3. Please check https://pypi.org/project/torchvision/ table before installing `torch` and `torchvision` and find versions suitable for you. 
+1. Ensure you have Python 3.10+ installed on your machine. 
+2. Please check https://pypi.org/project/torchvision/ table before installing `torch` and `torchvision` and find versions suitable for you. 
 Also, if you have CUDA drivers, it makes sense to use a `cu` versions, which you can always obtain here: https://download.pytorch.org/whl/
-5. Set up your MySQL database and ensure you update the `db_connect()` function in `data_processors.py` with your MySQL credentials.
+If you do not know which ones do you need, just uncomment `torch` and `torchvision` lines in `requirements.txt`
+3. Install necessary dependencies by running `pip install -r requirements.txt` in your terminal.
+5. Set up your MySQL database ( I used [MariaDB](https://mariadb.org/download) ) and ensure you update the `db_connect()` function in `data_processors.py` with your MySQL credentials.
 
 ## Usage
 
-1. Run `python Indexer.py` to index folder with your images. It may take a time.
-2. Run `python main.py`, enter your search query and set a similarity threshold in the GUI.
+1. Run `python Indexer.py` to index folder with your images. The first run downloads the CLIP model, so it may take a time. Also, the indexation speed depends on how many images do you have in folder (*sincerelly, capt. Obvious*). 
+2. Run `python main.py`, enter your search query and set a similarity threshold in the GUI. It's kinda ***strictness*** of how the search will follow your prompt.
 3. Click 'OK' to perform the search. The program will then display a list of images matching your search query.
 
 This project is an excellent example of using cutting-edge machine learning models for practical applications. Please note that as of the date of this readme, the project only supports .jpg, .png, and .jpeg image formats.
