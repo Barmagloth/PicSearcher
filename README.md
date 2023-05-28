@@ -19,7 +19,7 @@ Please note that the OpenAI CLIP model used in this project requires a significa
 
 1. Ensure you have Python 3.10+ installed on your machine. 
 2. Please check https://pypi.org/project/torchvision/ table before installing `torch` and `torchvision` and find versions suitable for you. 
-Also, if you have CUDA drivers, it makes sense to use a `cu` versions, which you can always obtain here: https://download.pytorch.org/whl/
+Also, if you have CUDA drivers, it makes sense to use a `cu` versions, which you can always obtain [here](https://download.pytorch.org/whl/).
 If you do not know which ones do you need, just uncomment `torch` and `torchvision` lines in `requirements.txt`
 3. Install necessary dependencies by running `pip install -r requirements.txt` in your terminal.
 5. Set up your MySQL database ( I used [MariaDB](https://mariadb.org/download) ) and ensure you update the `db_connect()` function in `data_processors.py` with your MySQL credentials.
