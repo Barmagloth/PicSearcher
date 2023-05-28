@@ -1,6 +1,7 @@
 # PicSearcher
 
 PicSearcher is a Python-based tool designed to search for images based on textual descriptions. This tool utilizes the CLIP model from OpenAI for understanding images and text in the same semantic space. 
+
 Simply speaking, it searches for pictures by their description.
 
 # Samples
