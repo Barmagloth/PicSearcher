@@ -13,7 +13,7 @@ Simply speaking, it searches for pictures by their description.
 
 ## Note
 
-Please note that the CLIP model used in this project requires a significant amount of computational resources. You may need a machine with an NVIDIA GPU to run this program efficiently.
+Please note that the OpenAI CLIP model used in this project requires a significant amount of computational resources. You may need a machine with an NVIDIA GPU to run this program efficiently.
 
 ## Installation
 
