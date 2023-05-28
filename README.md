@@ -2,6 +2,13 @@
 
 PicSearcher is a Python-based tool designed to search for images based on textual descriptions. This tool utilizes the CLIP model from OpenAI for understanding images and text in the same semantic space. PicSearcher is structured in four primary Python scripts: `data_processors.py`, `Indexer.py`, `Searcher.py`, and `main.py`.
 
+# Samples
+
+<img src="docs/sample4.png" width="40%" height="40%"></img>
+<img src="docs/sample1.jpg" width="40%" height="40%"></img>
+<img src="docs/sample2.png" width="40%" height="40%"></img>
+<img src="docs/sample3.png" width="40%" height="40%"></img>
+
 ## Note
 
 Please note that the CLIP model used in this project requires a significant amount of computational resources. You may need a machine with an NVIDIA GPU to run this program efficiently.
