@@ -62,7 +62,6 @@ while True:
         #print(f"File list:  {file_list}")
         window['-FILE LIST-'].update(file_list)
         if file_list:
-            print(file_list)
             filename = file_list[selected_index]
             window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
             window['-FILE LIST-'].update(set_to_index=selected_index)
