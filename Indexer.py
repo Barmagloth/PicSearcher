@@ -4,8 +4,8 @@ import os
 from PIL import Image
 from torchvision.transforms import Compose, Resize, Normalize, ToTensor
 
-min_height = input('Input minimal height of images: ')
-min_width = input('Input minimal width of images: ')
+min_height = int(input('Input minimal height of images: '))
+min_width = int(input('Input minimal width of images: '))
 
 images_counter = 0
 
