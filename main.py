@@ -45,7 +45,7 @@ layout = [[sg.pin(sg.Column(layout1, size = (400,800))), sg.Column(layout2)]]
 window = sg.Window("PicSearcher by Barmagloth, 2023", layout,  size=(1200,800))
 
 # Initialise current selected index
-selected_index = 0
+
 file_list = None
 
 # Event Loop
@@ -54,38 +54,45 @@ while True:
     if event == sg.WINDOW_CLOSED:
         break
     if event == 'OK': # Search for files with the given text and threshold
+        selected_index = 0
         text = values['-TEXT-']
         if text == '':
             text = 'cat'
         file_list = search_tag(text, int(values['-THRESHOLD-']))
         #print(f"File list:  {file_list}")
         window['-FILE LIST-'].update(file_list)
-        filename = file_list[selected_index]
-        window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
-        window['-FILE LIST-'].update(set_to_index=selected_index)
-    if event == '\\/' or event == 'Down:40':  # Event triggered when the \/ or down arrow key is pressed
-        if file_list and selected_index < len(file_list) - 1:  # Check if there are files and index is not at the end
-            selected_index += 1
+        if file_list:
+            print(file_list)
             filename = file_list[selected_index]
-            #print(selected_index, filename)
             window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
             window['-FILE LIST-'].update(set_to_index=selected_index)
+        else:
+            sg.MsgBox("No files found")
+    if file_list:  # Check if there are files to display
+
+        if event == '\\/' or event == 'Down:40':  # Event triggered when the \/ or down arrow key is pressed
+            if file_list and selected_index < len(file_list) - 1:  # Check if there are files and index is not at the end
+                selected_index += 1
+                filename = file_list[selected_index]
+                #print(selected_index, filename)
+                window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
+                window['-FILE LIST-'].update(set_to_index=selected_index)
 
 
-    if event == '/\\' or event == 'Up:38':  # Event triggered when the /\ or up arrow key is pressed
-        if file_list and selected_index > 0:  # Check if there are files and index is not at the beginning
-            selected_index -= 1
-            filename = file_list[selected_index]
-            #print(selected_index, filename)
-            window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
-            window['-FILE LIST-'].update(set_to_index=selected_index)
-    if event == '-FILE LIST-':  # Event triggered when a file is chosen from the listbox
-        try:
-            filename = values['-FILE LIST-'][0]
-            selected_index = file_list.index(filename)
-            window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
-        except Exception as E:
-            print(f"** Error {E} **")
-        pass                    # An error happened trying to open the file. Skip this file
+        if event == '/\\' or event == 'Up:38':  # Event triggered when the /\ or up arrow key is pressed
+            if file_list and selected_index > 0:  # Check if there are files and index is not at the beginning
+                selected_index -= 1
+                filename = file_list[selected_index]
+                #print(selected_index, filename)
+                window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
+                window['-FILE LIST-'].update(set_to_index=selected_index)
+        if event == '-FILE LIST-':  # Event triggered when a file is chosen from the listbox
+            try:
+                filename = values['-FILE LIST-'][0]
+                selected_index = file_list.index(filename)
+                window['-IMAGE-'].update(data=convert_to_bytes(filename, resize=(800, 800)))
+            except Exception as E:
+                print(f"** Error {E} **")
+            pass                    # An error happened trying to open the file. Skip this file
 
 window.close()
